@@ -65,19 +65,7 @@ export default class blogPost extends Component {
                 }}
               />
             </div>
-            <Share
-              socialConfig={{
-                ...socialConfigss.site.siteMetadata.twitterhandletitle,
-                config: {
-                  url: `${siteurl}${socialConfigss.slug}`,
-                  title: `${socialConfigss.title}`
-                }
-              }}
-            />
-            <DiscussionEmbed
-              shortname={disqusShortname}
-              config={disqusConfig}
-            />
+ 
           </div>
         </div>
       </Layout>
@@ -85,7 +73,7 @@ export default class blogPost extends Component {
   }
 }
 
-export const pageQuery = graphql`
+/*export const pageQuery = graphql`
   query SinglePostQuery($slug: String!) {
     contentfulBlogs(slug: { eq: $slug }) {
       id
@@ -111,7 +99,6 @@ export const pageQuery = graphql`
     }
     contentfulSiteInformation {
       siteUrl
-      twitterHandle
     }
   }
-`;
+`;*/

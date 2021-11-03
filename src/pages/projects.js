@@ -7,23 +7,22 @@ import moment from "moment";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
-export default class Blogs extends Component {
-  render() {
-    const { data } = this.props;
+const Projects =({ data })=> {
+
     return (
       <Layout>
         <SEO
-          title="Blogs"
-          keywords={[`Rohit Gupta`, `Frontend Developer`, `Developer`, `Blogs`]}
+          title="Projects"
+          keywords={[`Jason Sonderman`]}
         />
-        <div className="site-container blogs-page" id="Blogs">
+        <div className="site-container projects-page" id="Projects">
           <div className="container">
             <div className="section-head">
-              <h1 className="line-heading h2">Blogs</h1>
+              <h1 className="line-heading h2">Projects</h1>
             </div>
             <ul
-              className={`blogs-list ${
-                data.allContentfulBlogs.edges.length < 5 ? "few-blogs" : ""
+              className={`projects-list ${
+                data.allContentfulBlogs.edges.length < 5 ? "few-projects" : ""
               }`}
             >
               {data.allContentfulBlogs.edges.map((item, index) => {
@@ -42,10 +41,7 @@ export default class Blogs extends Component {
                       )}
                       <div className="details">
                         <h3 className="title">{item.node.title}</h3>
-                        <span className="date">
-                          <i className="fas fa-calendar-alt"></i>{" "}
-                          {moment(item.node.createdAt).format("LL")}
-                        </span>
+                       
                       </div>
                     </div>
                   </li>
@@ -56,9 +52,8 @@ export default class Blogs extends Component {
         </div>
       </Layout>
     );
-  }
 }
-
+export default Projects;
 export const pageQuery = graphql`
   query BlogsQuery {
     allContentfulBlogs(sort: {fields: createdAt, order: DESC}) {

@@ -6,14 +6,14 @@ import SEO from "../components/seo";
 
 import Banner from "../components/banner";
 import About from "../components/about";
-import Blogs from "../components/blogs";
+import Projects from "../components/projects";
 import Contact from "../components/contact";
 
 const IndexPage = ({ data }) => (
 	  <Layout header="home">
 	    <SEO
 	      title={data.contentfulAboutMe.designation}
-	      keywords={[`Rohit Gupta`, `Frontend Developer`, `Developer`]}
+	      keywords={[`Jason Sonderman`]}
 	    />
 	    <Banner data={data.contentfulAboutMe}></Banner>
 	
@@ -27,7 +27,7 @@ const IndexPage = ({ data }) => (
 	    {data.contentfulSiteInformation.menus
 	      .filter(item => item === "Blogs")
 	      .map(t => {
-	        return <Blogs key="Blogs" data={data.allContentfulBlogs}></Blogs>;
+	        return <Projects key="Projects" data={data.allContentfulBlogs}></Projects>;
 	      })}
 	
 	    {data.contentfulSiteInformation.menus

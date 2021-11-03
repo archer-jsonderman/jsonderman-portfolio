@@ -4,17 +4,17 @@ import { Link } from "gatsby";
 import moment from "moment";
 import Modal from "./modal";
 
-const Blogs=(props)=>{
+const Projects=(props)=>{
     const { data } = props;
     const modalRef1 = useRef();
     return (
-      <div className="blogs-section section" id="Blogs">
+      <div className="projects-section section" id="Projects">
         <div className="container">
           <div className="section-head">
-            <h2>Blogs</h2>
+            <h2>Projects</h2>
           </div>
           <ul
-            className={`blogs-list ${data.edges.length < 5 ? "few-blogs" : ""}`}
+            className={`projects-list ${data.edges.length < 5 ? "few-projects" : ""}`}
           >
             {data.edges.map((item, index) => {
               return (
@@ -34,10 +34,7 @@ const Blogs=(props)=>{
                     )}
                     <div className="details">
                       <h3 className="title">{item.node.title}</h3>
-                      <span className="date">
-                        <i className="fas fa-calendar-alt"></i>{" "}
-                        {moment(item.node.createdAt).format("LL")}
-                      </span>
+                      
                     </div>
                   </div>
                 </li>
@@ -54,10 +51,10 @@ const Blogs=(props)=>{
             </Modal>
         </section>
           <div className="see-more">
-            <Link to="/blogs">
-              <span>More Blogs</span>
+            <Link to="/projects">
+              <span>More Projects</span>
             </Link>
           </div>*/
   }
   
-  export default Blogs
+  export default Projects

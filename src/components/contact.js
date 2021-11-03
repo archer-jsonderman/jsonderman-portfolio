@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
-export default class Contact extends Component {
-  render() {
+const Contact = (props) => {
     return (
       <div className="contact section" id="Contact">
         <div className="container">
@@ -9,7 +8,7 @@ export default class Contact extends Component {
             <h2 className="text-center">Contact</h2>
           </div>
           <form
-            action={`https://formspree.io/${this.props.data}`}
+            action={`https://formspree.io/${props.data}`}
             name="contact"
             method="POST"
             data-netlify="true"
@@ -36,5 +35,6 @@ export default class Contact extends Component {
         </div>
       </div>
     );
-  }
 }
+
+export default Contact;

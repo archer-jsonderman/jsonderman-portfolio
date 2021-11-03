@@ -14,7 +14,7 @@ module.exports = {
   siteMetadata: {
     title: `Jason Sonderman - User Experience Professional`,
     description: `Personal Site`,
-    author: `@rohitguptab`
+    author: `jasonsonderman`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -34,6 +34,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sass`,
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -53,6 +54,16 @@ module.exports = {
         id: 'portal',        
       },
     },// To learn more, visit: https://gatsby.dev/offline // this (optional) plugin enables Progressive Web App + Offline functionality
-    `gatsby-plugin-offline`
+    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          
+          `Josefin Sans\:300,400,400i,600,700,700i` // you can also specify font weights and styles
+        ],
+        display: 'swap'
+      }
+    }
   ]
 };

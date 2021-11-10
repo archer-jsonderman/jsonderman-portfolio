@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import { Link } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 var settings = {
   dots: true,
   speed: 500,
@@ -45,11 +45,7 @@ export default class Photos extends Component {
               {data.photos.slice(0, 9).map((item, index) => {
                 return (
                   <div key={index} className="photos-item">
-                    <Img
-                      fluid={item.fluid}
-                      objectFit="cover"
-                      objectPosition="50% 50%"
-                    />
+                    <GatsbyImage image={item.gatsbyImageData} objectFit="cover" objectPosition="50% 50%" />
                   </div>
                 );
               })}

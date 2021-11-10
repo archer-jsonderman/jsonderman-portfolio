@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export default class Banner extends Component {
   render() {
     const { data } = this.props;
     return (
       <div className="banner">
-        <Img
-          fluid={data.bannerImage.fluid}
+        <GatsbyImage
+          image={data.childImageSharp.gatsbyImageData}
           objectFit="cover"
-          objectPosition="50% 50%"
-        />
+          objectPosition="50% 50%" />
         <div className="container">
           <div className="banner-details">
             <h1>{data.designation}</h1>

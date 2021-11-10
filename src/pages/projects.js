@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { graphql } from "gatsby";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import moment from "moment";
 
@@ -31,11 +31,10 @@ const Projects =({ data })=> {
                     <div className="inner">
                       <Link className="link" to={`/${item.node.slug}`} />
                       {item.node.featureImage ? (
-                        <Img
-                          fluid={item.node.featureImage.fluid}
+                        <GatsbyImage
+                          image={item.node.childImageSharp.gatsbyImageData}
                           objectFit="cover"
-                          objectPosition="50% 50%"
-                        />
+                          objectPosition="50% 50%" />
                       ) : (
                         <div className="no-image"></div>
                       )}

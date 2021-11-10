@@ -8,6 +8,7 @@ import Banner from "../components/banner";
 import About from "../components/about";
 import Projects from "../components/projects";
 import Contact from "../components/contact";
+//<Banner data={data.contentfulAboutMe}></Banner>
 
 const IndexPage = ({ data }) => (
 	  <Layout header="home">
@@ -15,8 +16,7 @@ const IndexPage = ({ data }) => (
 	      title={data.contentfulAboutMe.designation}
 	      keywords={[`Jason Sonderman`]}
 	    />
-	    <Banner data={data.contentfulAboutMe}></Banner>
-	
+	    	
 	    {data.contentfulSiteInformation.menus
 	      .filter(item => item === "About")
 	      .map(t => {

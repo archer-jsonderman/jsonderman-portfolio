@@ -32,6 +32,15 @@ module.exports = {
         accessToken
       }
     },
+    {
+	  resolve: 'gatsby-plugin-react-svg',
+	  options: {
+	    rule: {
+	      include: /images/
+	    }
+	  }
+	},
+	`gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,

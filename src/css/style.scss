@@ -177,7 +177,7 @@ p{
 	left:0;
 	right:0;
 	z-index:999;
-	padding:20px 0;
+	padding:0;
 	*{
 		color:#fff;
 	}
@@ -187,6 +187,31 @@ p{
 		align-items:center;
 		.logo{
 			width:10%;
+			a{
+				display: grid;
+			    align-items: start;
+			    grid-template: 1fr/70px auto;
+				span{
+					display: block;
+					font-size: 14px;
+				    max-width: 30px;
+				    line-height: 1.4;
+				    align-self: center;
+				    margin-left: 10px;
+				    margin-bottom: 0;
+				    color: #f2f5ea;
+				    opacity: .6;
+				}
+				svg {
+				    height: auto;
+				    width: 100%;
+				    opacity: .4;
+				    path{
+					    fill:$ivory!important
+				    }
+				}
+
+			}
 		}
 		.menu{
 			width:90%;

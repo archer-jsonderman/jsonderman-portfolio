@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import Img from "gatsby-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 var settings = {
   dots: true,
   speed: 500,
@@ -26,12 +26,11 @@ export default class Testimonial extends Component {
               return (
                 <div key={index} className="testimonials-item">
                   <div className="testi-inner">
-                    <Img
+                    <GatsbyImage
+                      image={item.node.childImageSharp.gatsbyImageData}
                       className="avatar"
-                      fluid={item.node.avatarImage.fluid}
                       objectFit="cover"
-                      objectPosition="50% 50%"
-                    />
+                      objectPosition="50% 50%" />
                     <div
                       dangerouslySetInnerHTML={{
                         __html: item.node.description.childMarkdownRemark.html

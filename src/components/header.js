@@ -1,36 +1,24 @@
 import { Link } from "gatsby";
-import React, { Component } from "react";
+import React, { useState } from "react";
+import Logo from '../images/js-logo-mark.svg'
 
-export default class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      menu: false
-    };
-  }
-
-  render() {
-    const { data, header } = this.props;
-    const { menu } = this.state;
+const Header = ({data,header, siteTitle})=> {
+	console.log(data)
+    const [ menu, setMenu ] = useState(false);
     return (
       <header className={`site-header ${menu ? "active" : ""}`}>
         <div className="container">
           <div className="header-main">
             <div className="logo">
               <Link to="/">
-                {data.logo.file.url ? (
-                  <img src={data.logo.file.url} alt="logo" />
-                ) : (
-                  <span>{data.siteName}</span>
-                )}
+                <Logo/>
+                <span>{data.siteName}, UXC</span>
               </Link>
             </div>
             <div
               className="responsive-menu"
               onClick={() => {
-                this.setState({
-                  menu: !menu
-                });
+                 setMenu(!menu);
               }}
             >
               <span></span>
@@ -39,9 +27,7 @@ export default class Header extends Component {
               <div className="menu">
                 <ul
                   onClick={() => {
-                    this.setState({
-                      menu: false
-                    });
+                    setMenu(false);
                   }}
                 >
                   <li key="home">
@@ -83,9 +69,7 @@ export default class Header extends Component {
               <div className="menu">
                 <ul
                   onClick={() => {
-                    this.setState({
-                      menu: false
-                    });
+                    setMenu(false);
                   }}
                 >
                   <li key="home">
@@ -107,5 +91,6 @@ export default class Header extends Component {
         </div>
       </header>
     );
-  }
 }
+
+export default Header

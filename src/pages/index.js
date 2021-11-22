@@ -64,9 +64,11 @@ export const pageQuery = graphql`
     allContentfulCaseStudy {
       nodes {
         content {
-          content {
-            raw
-          }
+          copy {
+	          childMarkdownRemark {
+	            html
+	          }
+	        }
           sectionHeading
         }
         featuredImage {

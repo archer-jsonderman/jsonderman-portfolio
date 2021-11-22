@@ -2,15 +2,53 @@ import React, { Component } from "react";
 
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { BLOCKS } from "@contentful/rich-text-types"
+import { renderRichText } from "gatsby-source-contentful/rich-text"
+
 
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Share from "../components/share";
 
+
+const Text = ({ children }) => <p className="align-center">{children}</p>
+const options = {
+  renderNode: {
+    [BLOCKS.PARAGRAPH]: (node, children) => <Text>{children}</Text>,
+      },
+}
 const CaseStudy = ({data}) =>{
-    const projects = data.contentfulBlogs;
+    const projects = data.contentfulCaseStudy;
     const siteurl = data.contentfulSiteInformation.siteUrl + "/";
+
+   const contentSections = projects.content.map((item, index) => 
+	   {
+		   const section = item?.copy?.childMarkdownRemark.html
+		   const heading =item.sectionHeading
+
+		   return(
+			   <div 
+			   key={index}
+			   className="content-section">
+				   <h2>{heading}</h2>
+				   <div dangerouslySetInnerHTML={{ __html: section}}/>
+                  {item.sectionImage ? (
+                     
+              <GatsbyImage
+                image={item.sectionImage[0].gatsbyImageData}
+                className="feature-img"
+                objectFit="cover"
+                objectPosition="50% 50%" />
+           
+
+                    ) : (
+                      <div className="no-image"></div>
+                    )}
+			   </div>
+			)
+		 	 
+		})
    
     return (
       <Layout>
@@ -28,12 +66,9 @@ const CaseStudy = ({data}) =>{
 
             <div className="details">
               <h1 className="title">{projects.title}</h1>
-             
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: projects.description.childMarkdownRemark.html
-                }}
-              />
+			  {contentSections}
+			 
+
             </div>
  
           </div>
@@ -46,15 +81,30 @@ export default CaseStudy;
 
 export const pageQuery = graphql`
   query SinglePostQuery($slug: String!) {
-    contentfulBlogs(slug: { eq: $slug }) {
+    contentfulCaseStudy(slug: { eq: $slug }) {
       id
       title
       slug
-      description {
-        childMarkdownRemark {
-          html
+      content {
+        copy {
+          childMarkdownRemark {
+            html
+          }
         }
+        sectionHeading
+        sectionImage {
+	        gatsbyImageData
+	        fluid{
+		        src
+		    }
+	      }
       }
+		conclusion {
+	        content {
+	          raw
+	        }
+	      }
+			
     }
     contentfulSiteInformation {
       siteUrl

@@ -22,24 +22,24 @@ const Projects =({ data })=> {
             </div>
             <ul
               className={`projects-list ${
-                data.allContentfulBlogs.edges.length < 5 ? "few-projects" : ""
+                data.allContentfulCaseStudy.nodes.length < 5 ? "few-projects" : ""
               }`}
             >
-              {data.allContentfulBlogs.edges.map((item, index) => {
+              {data.allContentfulCaseStudy.nodes.map((item, index) => {
                 return (
                   <li key={index} className="item">
                     <div className="inner">
-                      <Link className="link" to={`/${item.node.slug}`} />
-                      {item.node.featureImage ? (
+                      <Link className="link" to={`/${item.slug}`} />
+                      {item.featuredImage ? (
                         <GatsbyImage
-                          image={item.node.childImageSharp.gatsbyImageData}
+                          image={item.featuredImage.gatsbyImageData}
                           objectFit="cover"
                           objectPosition="50% 50%" />
                       ) : (
                         <div className="no-image"></div>
                       )}
                       <div className="details">
-                        <h3 className="title">{item.node.title}</h3>
+                        <h3 className="title">{item.title}</h3>
                        
                       </div>
                     </div>
@@ -54,25 +54,25 @@ const Projects =({ data })=> {
 }
 export default Projects;
 export const pageQuery = graphql`
-  query BlogsQuery {
-    allContentfulBlogs(sort: {fields: createdAt, order: DESC}) {
-      edges {
-        node {
-          title
-          slug
-          featureImage {
-            fluid(maxWidth: 1500) {
-              base64
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
-            }
+  query CasesQuery  {
+    allContentfulCaseStudy {
+      nodes {
+        content {
+          content {
+            raw
           }
-          createdAt
+          sectionHeading
         }
+        featuredImage {
+          gatsbyImageData
+        }
+        conclusion {
+          content {
+            raw
+          }
+        }
+        slug
+        title
       }
     }
   }

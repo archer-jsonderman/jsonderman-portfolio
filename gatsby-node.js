@@ -7,7 +7,7 @@ exports.createPages = ({ actions: { createPage }, graphql }) => {
     resolve(
       graphql(`
         {
-          allContentfulBlogs(limit: 100) {
+          allContentfulCaseStudy(limit: 100) {
             edges {
               node {
                 id
@@ -20,7 +20,7 @@ exports.createPages = ({ actions: { createPage }, graphql }) => {
         if (result.errors) {
           reject(result.errors);
         }
-        result.data.allContentfulBlogs.edges.forEach(edge => {
+        result.data.allContentfulCaseStudy.edges.forEach(edge => {
           createPage({
             path: edge.node.slug,
             component: projectCaseStudyTemplate,

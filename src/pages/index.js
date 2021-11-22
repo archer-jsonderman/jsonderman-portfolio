@@ -27,7 +27,7 @@ const IndexPage = ({ data }) => (
 	    {data.contentfulSiteInformation.menus
 	      .filter(item => item === "Blogs")
 	      .map(t => {
-	        return <Projects key="Projects" data={data.allContentfulBlogs}></Projects>;
+	        return <Projects key="Projects" data={data.allContentfulCaseStudy}></Projects>;
 	      })}
 	
 	    {data.contentfulSiteInformation.menus
@@ -46,18 +46,7 @@ export const pageQuery = graphql`
     contentfulAboutMe {
       name
       photo {
-        file {
-          url
-        }
-        fluid {
-          base64
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
-        }
+        gatsbyImageData
       }
       designation
       id
@@ -68,39 +57,31 @@ export const pageQuery = graphql`
           html
         }
       }
-      bannerImage {
-        fluid(maxWidth: 1500) {
-          base64
-          aspectRatio
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-          sizes
-        }
-      }
+      
       bannerList
     }
-    allContentfulBlogs( sort: {fields: createdAt, order: DESC}) {
-      edges {
-        node {
-          title
-          slug
-          featureImage {
-            fluid(maxWidth: 600) {
-              base64
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
-            }
+
+    allContentfulCaseStudy {
+      nodes {
+        content {
+          content {
+            raw
           }
-          createdAt
+          sectionHeading
         }
+        featuredImage {
+          gatsbyImageData
+        }
+        conclusion {
+          content {
+            raw
+          }
+        }
+        slug
+        title
       }
     }
+
     contentfulSiteInformation {
       menus
     }

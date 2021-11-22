@@ -2,11 +2,8 @@ import React, { Component, useRef } from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import moment from "moment";
-import Modal from "./modal";
 
-const Projects=(props)=>{
-    const { data } = props;
-    const modalRef1 = useRef();
+const Projects=({ data })=>{
     return (
       <div className="projects-section section" id="Projects">
         <div className="container">
@@ -14,25 +11,25 @@ const Projects=(props)=>{
             <h2>Projects</h2>
           </div>
           <ul
-            className={`projects-list ${data.edges.length < 5 ? "few-projects" : ""}`}
+            className={`projects-list ${data.nodes.length < 5 ? "few-projects" : ""}`}
           >
-            {data.edges.map((item, index) => {
+            {data.nodes.map((item, index) => {
               return (
                 <li key={index} className="item">
                   <div className="inner">
                   	
-                    <Link className="link" to={`/${item.node.slug}`} />
+                    <Link className="link" to={`/${item.slug}`} />
 
-                    {item.node.featureImage ? (
+                    {item.featuredImage ? (
                       <GatsbyImage
-                        image={item.node.childImageSharp.gatsbyImageData}
+                        image={item.featuredImage.gatsbyImageData}
                         objectFit="cover"
                         objectPosition="50% 50%" />
                     ) : (
                       <div className="no-image"></div>
                     )}
                     <div className="details">
-                      <h3 className="title">{item.node.title}</h3>
+                      <h3 className="title">{item.title}</h3>
                       
                     </div>
                   </div>
@@ -43,17 +40,6 @@ const Projects=(props)=>{
         </div>
       </div>
     );
-    /*<section>
-            <button className="btn" onClick={() => modalRef1.current.openModal()}>Open modal</button>
-            <Modal ref={modalRef1}>
-                <h3>Modal title 1</h3>
-            </Modal>
-        </section>
-          <div className="see-more">
-            <Link to="/projects">
-              <span>More Projects</span>
-            </Link>
-          </div>*/
   }
   
   export default Projects

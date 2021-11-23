@@ -21,8 +21,8 @@ const options = {
 const CaseStudy = ({data}) =>{
     const projects = data.contentfulCaseStudy;
     const siteurl = data.contentfulSiteInformation.siteUrl + "/";
-
-   const contentSections = projects.content.map((item, index) => 
+	console.log(projects.content)
+   const contentSections = projects?.content?.map((item, index) => 
 	   {
 		   const section = item?.copy?.childMarkdownRemark.html
 		   const heading =item.sectionHeading

@@ -65,7 +65,10 @@ export const pageQuery = graphql`
         }
         conclusion {
           content {
-            raw
+            childMarkdownRemark {
+	            html
+	          }
+
           }
         }
         slug

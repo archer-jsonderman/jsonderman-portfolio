@@ -1,5 +1,6 @@
 import React from "react";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
+import { GatsbyImage,  StaticImage } from "gatsby-plugin-image";
 
 const Header = ({ data }) => (
   	<div className="about section" id="About">
@@ -19,18 +20,37 @@ const Header = ({ data }) => (
 				    />
 				    <div className="socials">
 				      <ul>
+				      <li>
+				          <a
+				            className="resume far fa-file-pdf"
+				            href={`JasonSondermanUXC-Resume.pdf`}
+				          >
+				      		</a>
+				        </li>
+				      <li>
+				          <a
+				            className="nng-badge"
+				            href="https://www.nngroup.com/ux-certification/"
+				            target="_blank"
+				            rel="noopener noreferrer"
+				          >
+				          <StaticImage
+					          src="../images/UX-Certified-NNg_smalltran.png"
+					          alt="Nielsen Norman Group UX Certified"
+				          /></a>
+				        </li>
 				        <li>
 				          <a
-				            className="fab fa-instagram"
-				            href={data.instagram}
+				            className="fab fa-linkedin-in"
+				            href={data.linkdin}
 				            target="_blank"
 				            rel="noopener noreferrer"
 				          ></a>
 				        </li>
 				        <li>
 				          <a
-				            className="fab fa-linkedin-in"
-				            href={data.linkdin}
+				            className="fab fa-instagram"
+				            href={data.instagram}
 				            target="_blank"
 				            rel="noopener noreferrer"
 				          ></a>

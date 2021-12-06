@@ -33,15 +33,6 @@ const Header = ({data,header, siteTitle})=> {
                   <li key="home">
                     <Link to="/#home">Home</Link>
                   </li>
-                  {data.menus
-                    .filter(item => item === "About")
-                    .map(t => {
-                      return (
-                        <li key="About">
-                          <Link to={`/#About`}>About</Link>
-                        </li>
-                      );
-                    })}
                  
                   {data.menus
                     .filter(item => item === "Blogs")

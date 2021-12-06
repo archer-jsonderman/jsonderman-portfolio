@@ -28,11 +28,12 @@ const Projects=({ data })=>{
                     ) : (
                       <div className="no-image"></div>
                     )}
-                    <div className="details">
-                      <h3 className="title">{item.title}</h3>
-                      
-                    </div>
+                   
                   </div>
+                   <div className="details">
+                      <h3 className="title">{item.title}</h3>
+                      <p dangerouslySetInnerHTML={{ __html: item.description.childMarkdownRemark.html}}/>
+                    </div>
                 </li>
               );
             })}

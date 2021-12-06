@@ -17,9 +17,10 @@ $laurel-green: rgba(187, 199, 164, 1);
 
 */
 
+$primaryfont: 'Josefin Sans',sans-serif;
 
 *{
-	font-family:'Josefin Sans',sans-serif;
+	font-family:$primaryfont;
 	color:$gunmetal;
 }
 img{
@@ -191,6 +192,7 @@ p{
 				display: grid;
 			    align-items: start;
 			    grid-template: 1fr/70px auto;
+			    text-decoration: none;
 				span{
 					display: block;
 					font-size: 14px;
@@ -339,6 +341,7 @@ body{
 						padding:0;
 						list-style:none;
 						display:flex;
+						float: right;
 						li{
 							margin-right:10px;
 							a{
@@ -348,31 +351,31 @@ body{
 								display:flex;
 								justify-content:center;
 								align-items:center;
-								border:2px solid #333;
+								border:2px solid #fff;
 								color:#333;
 								position:relative;
 								overflow:hidden;
+								background-color: rgba(255,255,255,.7);
+								border-radius: 5px;
+								padding: .2rem;
+								  flex-flow: column;
 								&:before{
 									position:relative;
 									z-index:1;
+									 display: block;
 								}
-								&:after{
-									content:"";
-									background:#333;
-									position:absolute;
-									top:-100%;
-									left:0;
-									-webkit-transition:0.3s all;
-									transition:0.3s all;
-									height:100%;
-									width:100%;
-								}
-								&:hover{
-									color:#fff;
+								&.resume {
+									width: 120px;
 									&:after{
-										top:0;
+										content: 'Resumé';
+										font-size: .7rem;
+										display: block;
+										font-family: $primaryfont;
+										margin-top: 5px;
+
 									}
 								}
+
 							}
 						}
 					}
@@ -505,9 +508,15 @@ form{
 	padding:0;
 	margin:0 -10px;
 	.item{
-		width:33.33%;
 		padding:0 10px;
-		margin-bottom:20px;
+		margin-bottom:3rem;
+		display:grid;
+		grid-template:1fr/40% 1fr;
+		.details{
+			padding:20px 20px;
+			width:100%;
+			
+		}	
 		.inner{
 			text-align:left;
 			-webkit-transition:0.5s all;
@@ -515,19 +524,7 @@ form{
 			display:flex;
 			position:relative;
 			overflow:hidden;
-			.details{
-				padding:20px 20px;
-				position:absolute;
-				width:100%;
-				bottom:0;
-				left:0;
-				right:0;
-				z-index:1;
-				color:#fff;
-				h3{
-					color:white;
-				}
-			}	
+			
 			img{
 				width:100%!important;
 				-webkit-transition:0.3s all!important;
@@ -559,17 +556,7 @@ form{
 				}
 
 			}
-			&:after{
-				content:"";
-				position:absolute;
-				top:0;
-				bottom:0;
-				left:0;
-				right:0;
-				width:100%;
-				height:100%;
-				background:rgba(0,0,0,.3);
-			}
+
 			.link{
 				position:absolute;
 				top:0;
@@ -598,12 +585,11 @@ form{
 
 		&:nth-child(1),
 		&:nth-child(2){
-			width:50%;
 			.inner .gatsby-image-wrapper{
-				height:300px;
+				height:200px;
 			}
 			.no-image{
-				height:300px;
+				height:200px;
 			}
 
 
@@ -612,9 +598,8 @@ form{
 	
 
 	&.few-projects .item{
-		width:50%;
 		.inner .gatsby-image-wrapper{
-			height:300px;
+			height:200px;
 		}
 
 	}
@@ -823,14 +808,8 @@ pre{
 	-webkit-transform:scale(1.1);
 	transform:scale(1.1);
 }
-.projects-list .item:nth-child(5n+1),
-.projects-list .item:nth-child(5n+2){
-	width:50%;
-}
-.projects-list .item:nth-child(5n+1) .gatsby-image-wrapper,
-.projects-list .item:nth-child(5n+2) .gatsby-image-wrapper{
-	height:300px;
-}
+
+
 .photos-list{
 	margin-bottom:20px;
 }
@@ -942,27 +921,55 @@ pre{
 }
 ;
 }
-.case-study .details .title{
-	font-size:26px;
-	margin-bottom:20px;
-}
-.case-study .details .date{
-	font-size:14px;
-	margin-bottom:30px;
-}
-.case-study .details h2{
-	font-size:22px;
-	line-height:26px;
-	margin-bottom:20px;
-}
-.case-study .details h3{
-	font-size:18px;
-}
-.case-study .details h4{
-	font-size:16px;
-}
-.case-study .details ul li{
-	font-size:14px;
+.case-study{
+	.details{
+		.title{
+			font-size:26px;
+			margin-bottom:20px;
+		}
+		.date{
+			font-size:14px;
+			margin-bottom:30px;
+		}
+		h2{
+			font-size:22px;
+			line-height:26px;
+			margin-bottom:20px;
+		}
+		h3{
+			font-size:18px;
+		}
+		h4{
+			font-size:16px;
+		}
+		.content-section{
+			ul{
+				li{
+					font-size:14px;
+				}
+			}
+			&.project-team{
+				ul {
+					display: flex;
+					list-style: none;
+					flex-flow: row wrap;
+					padding: 0;
+			
+					li {
+						margin: 0 1rem 1rem 0;
+						background: $laurel-green;
+						padding: .3rem 1rem;
+						display: flex;
+						align-content: center;
+						align-items: center;
+						font-size: 12px;
+						border-radius: 14px;
+					}
+			
+				}
+			}
+		}
+	}
 }
 .photos-list .slick-list .slick-track{
 	margin:0 -5px;

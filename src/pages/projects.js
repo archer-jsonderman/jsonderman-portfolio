@@ -38,11 +38,12 @@ const Projects =({ data })=> {
                       ) : (
                         <div className="no-image"></div>
                       )}
-                      <div className="details">
-                        <h3 className="title">{item.title}</h3>
-                       
-                      </div>
+                      
                     </div>
+                    <div className="details">
+                        <h3 className="title"><Link to={`/${item.slug}`}>{item.title}</Link></h3>
+                        <p dangerouslySetInnerHTML={{ __html: item.description.childMarkdownRemark.html}}/>
+                      </div>
                   </li>
                 );
               })}
@@ -59,6 +60,11 @@ export const pageQuery = graphql`
       nodes {
         content {
           sectionHeading
+        }
+        description{
+	        childMarkdownRemark {
+	          html
+	        }
         }
         featuredImage {
           gatsbyImageData

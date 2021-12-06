@@ -71,6 +71,11 @@ export const pageQuery = graphql`
 	        }
           sectionHeading
         }
+        description{
+	        childMarkdownRemark {
+	          html
+	        }
+        }
         featuredImage {
           gatsbyImageData
         }

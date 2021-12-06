@@ -21,16 +21,16 @@ const options = {
 const CaseStudy = ({data}) =>{
     const projects = data.contentfulCaseStudy;
     const siteurl = data.contentfulSiteInformation.siteUrl + "/";
-	console.log(projects.content)
    const contentSections = projects?.content?.map((item, index) => 
 	   {
 		   const section = item?.copy?.childMarkdownRemark.html
 		   const heading =item.sectionHeading
+		   const sectionClass = heading.toLowerCase().replace(' ','-');
 
 		   return(
 			   <div 
 			   key={index}
-			   className="content-section">
+			   className={`content-section ${sectionClass}`}>
 				   <h2>{heading}</h2>
 				   <div dangerouslySetInnerHTML={{ __html: section}}/>
                   {item.sectionImage ? (

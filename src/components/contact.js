@@ -10,6 +10,7 @@ const Contact = (props) => {
           <form
             name="contact"
             method="POST"
+            action="https://formspree.io/f/xrgjgbnw"
             netlify-honeypot="bot-field"
             data-netlify="true"
           >

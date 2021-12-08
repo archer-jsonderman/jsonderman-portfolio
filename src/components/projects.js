@@ -31,7 +31,8 @@ const Projects=({ data })=>{
                    
                   </div>
                    <div className="details">
-                      <h3 className="title">{item.title}</h3>
+                      <h3 className="title">
+                      <Link className="link" to={`/${item.slug}`}>{item.title}</Link></h3>
                       <p dangerouslySetInnerHTML={{ __html: item.description.childMarkdownRemark.html}}/>
                     </div>
                 </li>

@@ -26,13 +26,14 @@ const CaseStudy = ({data}) =>{
 		   const section = item?.copy?.childMarkdownRemark.html
 		   const heading =item.sectionHeading
 		   const sectionClass = heading.toLowerCase().replace(' ','-');
+		   const sectionType = item.sectionImage ? 'content-image': '';
 
 		   return(
 			   <div 
 			   key={index}
-			   className={`content-section ${sectionClass}`}>
+			   className={`content-section ${sectionClass} ${sectionType}`}>
 				   <h2>{heading}</h2>
-				   <div dangerouslySetInnerHTML={{ __html: section}}/>
+				   <div className="contentCopy" dangerouslySetInnerHTML={{ __html: section}}/>
                   {item.sectionImage ? (
                      
               <GatsbyImage
@@ -65,10 +66,13 @@ const CaseStudy = ({data}) =>{
           <div className="container">
 
             <div className="details">
-              <h1 className="title">{projects.title}</h1>
-			  {contentSections}
-			 
-
+				<h1 className="title">{projects.title}</h1>
+				{contentSections}
+				
+				<div className={`content-section conclusion`}>
+					<h2>Conclusion</h2>
+					<div dangerouslySetInnerHTML={{ __html: projects.conclusion.content.childMarkdownRemark.html}}/>
+				</div>
             </div>
  
           </div>

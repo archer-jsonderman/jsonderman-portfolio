@@ -63,7 +63,7 @@ module.exports = {
       options: {
         fonts: [
           
-          `Josefin Sans\:300,400,400i,600,700,700i` // you can also specify font weights and styles
+          `IBM+Plex+Sans\:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600` // you can also specify font weights and styles
         ],
         display: 'swap'
       }

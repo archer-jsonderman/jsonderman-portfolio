@@ -8,11 +8,13 @@ const Contact = (props) => {
             <h2 className="text-center">Contact</h2>
           </div>
           <form
-            action={`https://formspree.io/${props.data}`}
             name="contact"
             method="POST"
+            netlify-honeypot="bot-field"
             data-netlify="true"
           >
+<input type="hidden" name="bot-field" />
+<input type="hidden" name="form-name" value="contact" />
             <div>
               <label>
                 Your Name: <input type="text" name="name" required />

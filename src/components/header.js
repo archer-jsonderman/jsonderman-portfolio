@@ -2,9 +2,9 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import Logo from '../images/js-logo-mark.svg'
 
-const Header = ({data,header, siteTitle})=> {
-	console.log(data)
+const Header = ({data, header, siteTitle})=> {
     const [ menu, setMenu ] = useState(false);
+    console.log(header)
     return (
       <header className={`site-header ${menu ? "active" : ""}`}>
         <div className="container">
@@ -23,7 +23,6 @@ const Header = ({data,header, siteTitle})=> {
             >
               <span></span>
             </div>
-            {header === "home" ? (
               <div className="menu">
                 <ul
                   onClick={() => {
@@ -31,18 +30,22 @@ const Header = ({data,header, siteTitle})=> {
                   }}
                 >
                   <li key="home">
-                    <Link to="/#home">Home</Link>
+                    <Link to="/" activeClassName="active">Home</Link>
                   </li>
                  
                   {data.menus
                     .filter(item => item === "Blogs")
                     .map(t => {
                       return (
-                        <li key="Projects">
-                          <Link to={`/#Projects`}>Projects</Link>
+                        <li key="projects">
+                          <Link to="/projects" activeClassName="active">Projects</Link>
                         </li>
                       );
-                    })}
+                    })
+                    }
+                     <li key="experience" >
+                    	<Link to="/experience" activeClassName="active">Experience</Link>
+                    </li>
 
                 
                   {data.menus
@@ -56,28 +59,7 @@ const Header = ({data,header, siteTitle})=> {
                     })}
                 </ul>
               </div>
-            ) : (
-              <div className="menu">
-                <ul
-                  onClick={() => {
-                    setMenu(false);
-                  }}
-                >
-                  <li key="home">
-                    <Link to="/#home">Home</Link>
-                  </li>
-                  {data.menus
-                    .filter(item => item === "Blogs")
-                    .map(t => {
-                      return (
-                        <li key="projects">
-                          <Link to="/projects">Projects</Link>
-                        </li>
-                      );
-                    })}
-                </ul>
-              </div>
-            )}
+            
           </div>
         </div>
       </header>

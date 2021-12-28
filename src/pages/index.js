@@ -2,17 +2,15 @@ import React from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 
-import Banner from "../components/banner";
 import About from "../components/about";
 import Projects from "../components/projects";
 import Contact from "../components/contact";
-//<Banner data={data.contentfulAboutMe}></Banner>
 
 const IndexPage = ({ data }) => (
 	  <Layout header="home">
-	    <SEO
+	    <Seo
 	      title={data.contentfulAboutMe.designation}
 	      keywords={[`Jason Sonderman`]}
 	    />
@@ -29,7 +27,7 @@ const IndexPage = ({ data }) => (
 	      .map(t => {
 	        return <Projects key="Projects" data={data.allContentfulCaseStudy}></Projects>;
 	      })}
-	
+	    
 	    {data.contentfulSiteInformation.menus
 	      .filter(item => item === "Contact")
 	      .map(t => {
@@ -95,5 +93,5 @@ export const pageQuery = graphql`
     contentfulSiteInformation {
       menus
     }
-  }
+      }
 `;

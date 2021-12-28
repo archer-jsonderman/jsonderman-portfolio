@@ -8,7 +8,7 @@ import { renderRichText } from "gatsby-source-contentful/rich-text"
 
 
 import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 import Share from "../components/share";
 
 
@@ -52,8 +52,9 @@ const CaseStudy = ({data}) =>{
 		})
    
     return (
-      <Layout>
-        <SEO
+      <Layout
+      header="projects">
+        <Seo
           title={projects.title}
           keywords={[
             `Jason Sonderman`,

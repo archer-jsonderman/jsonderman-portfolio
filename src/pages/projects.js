@@ -5,13 +5,14 @@ import { Link } from "gatsby";
 import moment from "moment";
 
 import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Seo from "../components/seo";
 
 const Projects =({ data })=> {
 
     return (
-      <Layout>
-        <SEO
+      <Layout
+      	header="projects">
+        <Seo
           title="Projects"
           keywords={[`Jason Sonderman`]}
         />

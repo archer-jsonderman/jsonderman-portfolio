@@ -42,7 +42,14 @@ module.exports = {
 	},
 	`gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+	    resolve:`gatsby-plugin-sharp`,
+	    options:{
+		    defaults:{
+			    quality:95
+		    }
+	    }
+	},
     `gatsby-plugin-sass`,
     `gatsby-transformer-remark`,
     {

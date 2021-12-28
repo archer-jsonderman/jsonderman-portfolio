@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { GatsbyImage,  StaticImage } from "gatsby-plugin-image";
+import NNGLogo from '../images/NNG-UX-Cert-Small.svg'
 
 const Header = ({ data }) => (
   	<div className="about section" id="About">
@@ -12,13 +13,18 @@ const Header = ({ data }) => (
 				    <span className="name">My name is {data.name}.</span>
 				    <h2 className="sub-position">
 				      {data.designation}
+				      <span className="certification">
+				      	<NNGLogo/>
+				      </span>
 				    </h2>
 				    <div className="about-avatar">
 						<GatsbyImage
 							image={data.photo.gatsbyImageData}
 							objectFit="cover"
 							objectPosition="top center" />
+						
 			        </div>
+
 				 </div>
 			    <div
 			      dangerouslySetInnerHTML={{
@@ -34,18 +40,7 @@ const Header = ({ data }) => (
 			          >
 			      		</a>
 			        </li>
-			      <li>
-			          <a
-			            className="nng-badge"
-			            href="https://www.nngroup.com/ux-certification/"
-			            target="_blank"
-			            rel="noopener noreferrer"
-			          >
-			          <StaticImage
-				          src="../images/UX-Certified-NNg_smalltran.png"
-				          alt="Nielsen Norman Group UX Certified"
-			          /></a>
-			        </li>
+			      
 			        <li>
 			          <a
 			            className="fab fa-linkedin-in"

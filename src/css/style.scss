@@ -6,6 +6,7 @@ $blush: #e75a7c;
 $ivory: #f2f5ea;
 $timberwolf: #d6dbd2;
 $laurel-green: #bbc7a4;
+$linkslate:#124675;
 
 
 /* SCSS RGB 
@@ -62,9 +63,21 @@ h5{
 	font-size:10px;
 }
 p{
-	font-size:14px;
 	line-height: 1.8;
     margin: 0 auto 1.4rem;
+}
+a{
+	text-decoration:none;
+	color:$linkslate;
+	&:hover{
+		text-decoration: underline;
+	}
+}
+ul{
+	li{
+		line-height:1.6;
+		margin-bottom: .8rem;
+	}
 }
 .banner{
 	position:relative;
@@ -214,6 +227,7 @@ p{
 			    align-items: start;
 			    grid-template: 1fr/70px auto;
 			    text-decoration: none;
+			    
 				span{
 					display: block;
 					font-size: 14px;
@@ -267,7 +281,10 @@ p{
 						&:hover:after{
 							width:100%;
 							transition:0.5s all;
-						}	
+						}
+						&:hover{
+						    text-decoration:none;
+					    }	
 					}
 				}
 			}
@@ -275,9 +292,8 @@ p{
 	}
 }
 a{
-	color:$blush;
+	color:$linkslate;
 	&:hover{
-		color:$laurel-green;
 		text-decoration:underline;
 }
 }
@@ -354,6 +370,7 @@ body{
 			    overflow: hidden;
 			    grid-row: 1/3;
 			    grid-column: 2;
+			   
 		    	@include for-desktop-up{
 			    	display:none;
 		    	}
@@ -364,10 +381,20 @@ body{
 				display:block;
 			}
 			.sub-position{
-				margin-bottom: 1.6rem;
+				margin-bottom: 0;
 				display:block;
 				grid-row: 2;
 				margin-top: 0;
+				span.certification {
+				    width: 80px;
+				    height: 80px;
+			        vertical-align: middle;
+					margin-left: 1rem;
+					display: inline-block;
+				}
+				&::after{
+					content:none;
+				}
 			}
 			.details{
 				padding:0;
@@ -411,7 +438,7 @@ body{
 							background-color: rgba(255,255,255,.7);
 							border-radius: 5px;
 							padding: .2rem;
-							  flex-flow: column;
+							flex-flow: column;
 							&:before{
 								position:relative;
 								z-index:1;
@@ -459,6 +486,9 @@ body{
 			h3{
 				a{
 					text-decoration: none;
+					&:hover{
+					    text-decoration:underline;
+				    }
 				}
 			}
 			
@@ -488,6 +518,9 @@ body{
 						font-size:24px;
 						text-shadow:1px 1px 4px #333;
 						text-decoration:none;
+						&:hover{
+						    text-decoration:underline;
+					    }
 					}
 
 				}
@@ -659,6 +692,7 @@ h2:after,
 		}
 		&:hover{
 			color:#fff;
+			text-decoration:underline;
 			&:after{
 				top:0;
 			}
@@ -926,6 +960,39 @@ pre{
 			
 				}
 			}
+		}
+	}
+}
+.experience-list{
+	h2.title {
+	    margin-bottom: 0;
+	}
+	.pills ul {
+	    display: flex;
+	    list-style: none;
+	    flex-flow: row wrap;
+	    padding: 0;
+	    li {
+		    margin: 0 1rem 1rem 0;
+		    background: $laurel-green;
+		    padding: 0.3rem 1rem;
+		    display: flex;
+		    align-content: center;
+		    align-items: center;
+		    font-size: 12px;
+		    border-radius: 14px;
+		}
+
+	}
+	ul.dates{
+		list-style: none;
+	    padding: 0;
+	    display: flex;
+
+		li.endDate:before {
+		    content: '–';
+		    display: inline-block;
+		    margin: 0 0.6rem;
 		}
 	}
 }

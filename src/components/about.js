@@ -36,7 +36,7 @@ const Header = ({ data }) => (
 			      <li>
 			          <a
 			            className="resume far fa-file-pdf"
-			            href={`JasonSondermanUXC-Resume.pdf`}
+			            href={`Resume-JasonSonderman.pdf`}
 			          >
 			      		</a>
 			        </li>

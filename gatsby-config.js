@@ -5,10 +5,10 @@ require('dotenv').config({
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
 	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-	environment: 'master'
+	environment: 'mobileauth'
 }
 
-const { spaceId, accessToken } = contentfulConfig
+const { spaceId, accessToken, environment } = contentfulConfig
 
 module.exports = {
   siteMetadata: {
@@ -29,7 +29,8 @@ module.exports = {
       resolve: "gatsby-source-contentful",
       options: {
         spaceId,
-        accessToken
+        accessToken,
+        environment
       }
     },
     {

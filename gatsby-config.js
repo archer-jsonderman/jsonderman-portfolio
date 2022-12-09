@@ -1,6 +1,8 @@
-require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
 })
+
+const path = require("path");
 
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
@@ -17,7 +19,22 @@ module.exports = {
     author: `jasonsonderman`
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-postcss',
+    `gatsby-plugin-image`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sass`,
+    `gatsby-transformer-remark`,
+    // To learn more, visit: https://gatsby.dev/offline // this (optional) plugin enables Progressive Web App + Offline functionality
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-mdx`,
+    
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/pages`
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -40,8 +57,6 @@ module.exports = {
 	    }
 	  }
 	},
-	`gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
     {
 	    resolve:`gatsby-plugin-sharp`,
 	    options:{
@@ -50,8 +65,6 @@ module.exports = {
 		    }
 	    }
 	},
-    `gatsby-plugin-sass`,
-    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -63,8 +76,6 @@ module.exports = {
         icon: `src/images/fev_icon.png` // This path is relative to the root of the site.
       }
     }, 
-     // To learn more, visit: https://gatsby.dev/offline // this (optional) plugin enables Progressive Web App + Offline functionality
-    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -74,6 +85,14 @@ module.exports = {
         ],
         display: 'swap'
       }
+    },
+    {
+      resolve: "gatsby-plugin-root-import",
+      options: {
+        components: path.join(__dirname,"src","components"),
+        styles: path.join(__dirname, "src","css"),
+        assets: path.join(__dirname, "src","assets")
+      },
     }
   ]
 };

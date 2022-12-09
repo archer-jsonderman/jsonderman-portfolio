@@ -98,11 +98,8 @@ export const pageQuery = graphql`
         }
         sectionHeading
         sectionImage {
-	        gatsbyImageData
-	        fluid{
-		        src
-		    }
-	      }
+          gatsbyImageData(layout: CONSTRAINED)
+        }
       }
 		conclusion {
 	        content {

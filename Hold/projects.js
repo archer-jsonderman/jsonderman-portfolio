@@ -1,31 +1,23 @@
-import React, { Component } from "react";
+import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-import moment from "moment";
 
 import Layout from "../components/layout";
-import Seo from "../components/seo";
 
 const Projects =({ data })=> {
 
     return (
       <Layout
       	header="projects">
-        <Seo
-          title="Projects"
-          keywords={[`Jason Sonderman`]}
-        />
         <div className="site-container projects-page" id="Projects">
           <div className="container">
             <div className="section-head">
               <h1 className="line-heading h2">Projects</h1>
             </div>
             <ul
-              className={`projects-list ${
-                data.allContentfulCaseStudy.nodes.length < 5 ? "few-projects" : ""
-              }`}
-            >
+              className="projects-list few-projects" 
+                          >
               {data.allContentfulCaseStudy.nodes.map((item, index) => {
                 return (
                   <li key={index} className="item">

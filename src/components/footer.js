@@ -1,15 +1,29 @@
-import React, { Component } from "react";
+import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import Contact from "components/contact";
 
-const Footer = (props) => {
+const Footer = () => {
+const data = useStaticQuery(graphql`
+query SiteFooterQuery {
+  site {
+    siteMetadata {
+      title
+    }
+  }
 
-    return (
+}
+`)
+ return (
+  <>
+                  <Contact/>
+
       <div className="site-footer" id="footer">
         <div className="container">
-          <span>{props.siteName}</span>
+          <span>{data.site.siteMetadata.title}</span>
         </div>
       </div>
-    );
-
+      </>
+    )
 }
 
 export default Footer;

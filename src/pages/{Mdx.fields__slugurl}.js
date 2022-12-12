@@ -1,12 +1,8 @@
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import * as React from "react";
 
 import Layout from 'components/layout.js';
-
-
 import { MDXProvider } from "@mdx-js/react";
-//import {GridTable, ContentCard, ElevateColorBlock, CodeCard}  from "components/containers";
-//import 'styles/pages.scss';
 import 'styles/style.scss'
 
 const shortcodes = {}// GridTable, ContentCard, ElevateColorBlock, CodeCard };
@@ -14,7 +10,18 @@ const shortcodes = {}// GridTable, ContentCard, ElevateColorBlock, CodeCard };
 export default function PageTemplate({ data,children }) {
   return (
     <MDXProvider components={shortcodes}>
-      <Layout data={data} children={children}/>
+          <Layout 
+            id={data.mdx.parent.relativeDirectory || 'standardContent'}
+            >
+              <p id="backLink"><Link to="/case-studies">Back to Case Studies</Link></p>
+              <section className="details">
+                <section className="contentHeader">
+                  <h1>{data.mdx.frontmatter.title}</h1>
+                </section>
+                {children}
+              </section>
+
+            </Layout> 
     </MDXProvider>
   );
 }
@@ -35,16 +42,33 @@ export const pageQuery = graphql`
       frontmatter {
         title
         description
+        featuredImage {
+          childrenImageSharp {
+            gatsbyImageData
+          }
+        }
       }
+      body
       fields {
         slugurl
       }
-      tableOfContents
       parent {
         ... on File {
           relativeDirectory
         }
       }
     }
+      site {
+        siteMetadata {
+          title
+          siteName
+          description
+          menuLinks {
+            link
+            name
+          }
+        }
+      }
+    
   }
 `;

@@ -1,4 +1,5 @@
 import React from "react";
+import Contact from "components/contact";
 import Header from "components/header";
 import Footer from "components/footer";
 
@@ -16,6 +17,7 @@ const NotFoundPage = () => {
                       <p>You just hit a route that doesn't exist... the sadness.</p>
                     </div>
                   </div>
+                  <Contact/>
                 </section>
               </div>
             </main>

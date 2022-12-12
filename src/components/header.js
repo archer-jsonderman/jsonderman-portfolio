@@ -1,18 +1,32 @@
-import { Link } from "gatsby";
+import {useStaticQuery, graphql,Link } from "gatsby";
 import React, { useState } from "react";
-import Logo from '../images/js-logo-mark.svg'
+import Logo from 'assets/images/js-logo-mark.svg'
 
-const Header = ({data, header, siteTitle})=> {
+const Header = ()=> {
     const [ menu, setMenu ] = useState(false);
-    console.log(header)
-    return (
+    const data = useStaticQuery(graphql`
+    query SiteHeadQuery {
+      site {
+        siteMetadata {
+          siteName
+          menuLinks {
+            link
+            name
+          }
+        }
+      }
+    
+    }
+  `)
+  //const {site:{siteMetadata:{title, menuLinks}}} = data;
+      return(
       <header className={`site-header ${menu ? "active" : ""}`}>
         <div className="container">
           <div className="header-main">
             <div className="logo">
               <Link to="/">
                 <Logo/>
-                <span>{data.siteName}, UXC</span>
+                <span>{data.site.siteMetadata.siteName}</span>
               </Link>
             </div>
             <div
@@ -29,41 +43,23 @@ const Header = ({data, header, siteTitle})=> {
                     setMenu(false);
                   }}
                 >
-                  <li key="home">
-                    <Link to="/" activeClassName="active">Home</Link>
-                  </li>
-                 
-                  {data.menus
-                    .filter(item => item === "Blogs")
-                    .map(t => {
-                      return (
-                        <li key="projects">
-                          <Link to="/projects" activeClassName="active">Projects</Link>
-                        </li>
-                      );
-                    })
-                    }
-                     <li key="experience" >
-                    	<Link to="/experience" activeClassName="active">Experience</Link>
-                    </li>
-
-                
-                  {data.menus
-                    .filter(item => item === "Contact")
-                    .map(t => {
-                      return (
-                        <li key="Contact">
-                          <Link to={`/#Contact`}>Contact</Link>
-                        </li>
-                      );
-                    })}
+                   {data.site.siteMetadata.menuLinks.map(link => (
+                <li
+                  key={link.name}
+                >
+                  <Link to={link.link} activeClassName="active">
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+                  
                 </ul>
               </div>
             
           </div>
         </div>
       </header>
-    );
+    )
 }
 
 export default Header
